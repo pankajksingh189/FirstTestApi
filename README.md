@@ -1,19 +1,19 @@
 # FirstTestApi
 Basic API creation
 
-##Get all member details:
-###Method: Get
-/api/v1/majnuvilla
+## Get all member details:<br>
+### Method: Get<br>
+/api/v1/majnuvilla<br>
 
-##Get member details by name:
-###Method: Get
-/api/v1/majnuvilla/{name}
+## Get member details by name:<br>
+### Method: Get<br>
+/api/v1/majnuvilla/{name}<br>
 
 
-##Add member:
-###Method: Post
-/api/v1/addmember
-Body:  x-www-form-urlencoded
-<name>  		<Value>
-<organization>  <Value>
-<location>  	<Value>
+## Add member:<br>
+### Method: Post<br>
+/api/v1/addmember<br>
+Body:  x-www-form-urlencoded<br>
+<name>  		<Value><br>
+<organization>  <Value><br>
+<location>  	<Value><br>
