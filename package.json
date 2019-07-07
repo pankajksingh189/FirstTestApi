@@ -4,8 +4,9 @@
   "description": "testing purpose",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node_modules/.bin/babel-node app.js"
+   "install": "npm install",
+   "deploy": "node_modules/.bin/babel-node app.js",
+	"start": "npm run install && npm run deploy"
   },
   "author": "",
   "license": "ISC",
