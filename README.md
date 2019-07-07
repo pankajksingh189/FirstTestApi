@@ -14,6 +14,6 @@ Basic API creation <br>
 ### Method: Post<br>
 /api/v1/addmember<br>
 Body:  x-www-form-urlencoded<br>
-"<name>  		<Value>"<br>
-"<organization>  <Value>"<br>
-"<location>  	<Value>"<br>
+name  			Value<br>
+organization	Value<br>
+location		Value<br>
