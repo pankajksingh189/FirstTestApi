@@ -1,81 +1,16 @@
-import bodyParser from 'body-parser';
-import express from 'express';
-import db from './db/db';
-// Set up the express app
-const app = express();
+var express = require('express');
+var app = express();
+var fs = require("fs");
 
-// Parse incoming requests data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-
-//get all todos
-app.get('/api/v1/majnuvilla', (req, res) => {
-  console.log("Api is hit.")
-    res.status(200).send({
-    success: 'true',
-    message: 'Details retrieved successfully',
-    todos: db
-  })
+app.get('/listUsers', function (req, res) {
+  console.log("gyjjygjgfjyfyjf "+ __dirname + "\\" + "db.js")
+   fs.readFile( __dirname + "\\" + "db.js", 'utf8', function (err, data) {
+      console.log( data );
+      res.end( data );
+   });
 });
-
-// Add todo
-app.post('/api/v1/addmember', (req, res) => {
-    console.log("Requesting to add "+req.body)
-    if(!req.body.name) {
-      return res.status(400).send({
-        success: 'false',
-        message: 'Name is required'
-      });
-    } else if(!req.body.orgization) {
-      return res.status(400).send({
-        success: 'false',
-        message: 'Orgization is required'
-      });
-    }else if(!req.body.location) {
-        return res.status(400).send({
-          success: 'false',
-          message: 'Location is required'
-        });
-    }
-
-   const todo = {
-     id: db.length + 1,
-     identifier: req.body.name.replace(/\s/g,''),
-     name: req.body.name,
-     orgization: req.body.orgization,
-     location: req.body.location
-   }
-   db.push(todo);
-   console.log("Record added in database" +todo);
-   return res.status(201).send({
-     success: 'true',
-     message: 'Member added successfully',
-     todo
-   })
-  });
-
-// search member
-app.get('/api/v1/majnuvilla/:name', (req, res) => {
-    //const id = parseInt(req.params.name, 10);
-    const name = req.params.name;
-    console.log("Requested information for "+name);
-    db.map((todo) => {
-      if (todo.identifier.toLowerCase().toString() == name.toLowerCase().toString()) {
-        return res.status(200).send({
-          success: 'true',
-          message: 'Member details retrieved successfully',
-          todo,
-        });
-      } 
-  });
-   return res.status(404).send({
-     success: 'false',
-     message: 'Member details does not exist',
-    });
-  });
-
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`server running on port ${port}`)
-});
+var server = app.listen(8081, function () {
+   var host = server.address().address
+   var port = server.address().port
+   console.log("Example app listening at http://localhost", host, port)
+})
